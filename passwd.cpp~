@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main(){
+  string password = "1534";
+  string guess = "0000";
+  string chars = "0123456789abcdefghijklmnopqrstuvwxyz";
+  int i = 0;
+  bool found = false;
+  while(!found) {
+    guess[3] = chars[i];
+    for (int j = 0; j < 36; j++){
+      guess[2] = chars[j];
+      for (int k = 0; k < 36; k++) {
+        guess[1] = chars[k];
+        for (int l = 0; l < 36; l++)
+        {
+          guess[0] = chars[l];
+          if (guess == password) {
+            found = true;
+            break;
+          }
+        }
+        if (found) break;
+      }
+      if (found) break;
+    }
+    i++;
+  }
+  cout << guess << endl;
+  return 0;
+}
